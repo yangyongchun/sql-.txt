@@ -1,0 +1,28 @@
+/usr/local/mysql/bin/mysql -u root -p     //登录
+
+alter table ’user‘ modify column ‘username’ varchar(20) binary; //将表内容设为区分大小写
+
+create table emp（emp_id int not null,emp_name nvarchar(20) not null, emp_sex nchar(1),constraint pk_emp_id primary key(emp_id)）;  //创建表，设置主键并命名主键
+
+insert into emp values(1,'yyc','M'); //插入数据
+
+alter table 表名 add 字段名 类型; //添加字段
+
+alter table orders add constraint orders_id primary key(id); //给字段添加主键约束
+
+/usr/local/mysql/bin/mysqldump -u root -p travelling>travelling.sql; //导出数据库
+
+use db;
+source [拖入导出的.sql文件] //导入数据库
+
+///////////////////////////////////////////////////////////////////////////////////////////////                mysql插入中文数据：
+/////             1. 在url连接的地方加上?useUnicode=true&characterEncoding=utf-8；
+/////             2. 将数据库的编码改成utf-8
+/////      create database mydb default character set utf8 collate utf8_general_ci;
+/////             3.建立表的时候也要指定其字符集
+/////      CREATE TABLE IF NOT EXISTS `mydb` ( 
+/////          `username` varchar(64) NOT NULL, 
+/////           `userid` int(11) NOT NULL, 
+/////         ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/////
+//////////////////////////////////////////////////////////////////////////////////////////
